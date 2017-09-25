@@ -17,6 +17,8 @@ eggs/
 .eggs/
 idea/
 .idea/
+committee-meetings-protocols/
+.committee-meetings-protocols/
 lib/
 lib64/
 parts/
