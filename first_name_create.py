@@ -1,14 +1,13 @@
 # -- coding: utf-8 --
 import requests
-import csv
 import json
-import pprint
-import codecs
+# import pprint
+# import codecs
 
 # CONSTS
 url = 'https://api.dbs.bh.org.il/v1/search?'
-# total_count = 9985
-total_count = 100
+total_count = 9985
+# total_count = 100
 
 def requests_first_name(n):
     clean_names = []
@@ -24,13 +23,12 @@ def requests_first_name(n):
     return clean_names
 
 def write_to_files(clean_names):
-    with open('first_name_list.csv', 'w') as f:
-        w = csv.writer(f)
-        w.writerow(["English", "Hebrew"])  # field header
+    with open('first_name_list.csv', 'w') as w:
+        # w.write(["English", "Hebrew"])  # field header
         for leg in clean_names:
             for first in leg:
-                name = first[1].encode('utf-8')
-                w.writerow(name)
+                name = first[1].encode("utf-8")
+                w.write(name + '\n')
 
 def main():
     clean_names = []
