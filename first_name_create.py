@@ -35,7 +35,6 @@ def main():
     for i in range(0, total_count, 15):
         clean_names.append(requests_first_name(i))
     write_to_files(clean_names)
-    pass
 
 
 if __name__ == '__main__':
