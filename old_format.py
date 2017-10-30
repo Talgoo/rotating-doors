@@ -16,7 +16,7 @@ def handle_files():
     The main function to start processing the rtf files
     into csv
     '''
-    file_prefix = "\old_committee_"
+    file_prefix = "old_committee-meetings-protocols"
     for file_name in glob2.glob(protocol_dir):
         if file_prefix in file_name:
             doc = Rtf15Reader.read(open(file_name))
@@ -25,14 +25,13 @@ def handle_files():
             for leg in data:
                 if "מוזמנים" in leg:
                     index_visitor = data.index(leg) + 1
-            name = ({'header': 'מוזמנים', 'body': data[index_visitor]})
-            dir_file = file_name.replace('.rtf', '.csv')
-            with open(dir_file, 'w') as f:
-                w = csv.DictWriter(f, name.keys())
-                w.writeheader()
-                w.writerow(name)
-    pass
-
+                    name = ({'header': 'מוזמנים', 'body': data[index_visitor]})
+                    dir_file = file_name.replace('.rtf', '.csv')
+                    with open(dir_file, 'w') as f:
+                        w = csv.DictWriter(f, name.keys())
+                        w.writeheader()
+                        w.writerow(name)
+                        break
 
 # def write_to_files(peoples, people_to_jobs_clean):
 #     with open('full_people_list.csv', 'w') as f:
