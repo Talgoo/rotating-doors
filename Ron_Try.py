@@ -30,6 +30,7 @@ def handle_files():
         if file_prefix in file_name:
             _, partial_path = file_name.split(file_prefix)
             committee_name, raw_date, _ = partial_path.split("\\")
+            committee_name = raw_date.split("_")[0]
             committee_date = raw_date.split("_")[1]
             people, problems = extract_people(file_name,committee_name, committee_date)
             peoples.extend(people)
